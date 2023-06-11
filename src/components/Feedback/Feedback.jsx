@@ -1,5 +1,6 @@
 import css from './Feedback.module.css';
 import { Component } from 'react';
+import { Statistics } from 'components/Statistics/Statistics';
 
 export class Feedback extends Component {
   state = {
@@ -39,20 +40,17 @@ export class Feedback extends Component {
         <button onClick={() => this.handleClick('good')}>Good</button>
         <button onClick={() => this.handleClick('neutral')}>Neutral</button>
         <button onClick={() => this.handleClick('bad')}>Bad</button>
-        <ul className={css.statisticsList}>
-          <h2>Statistics</h2>
-          <li>Good: {this.state.good}</li>
-          <li>Neutral: {this.state.neutral}</li>
-          <li>Bad: {this.state.bad}</li>
-          <li>Total: {this.countTotalFeedback()} </li>
-          <li>
-            Positive feedback:{' '}
-            {this.countPositiveFeedbackPercentage() > 0
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={
+            this.countPositiveFeedbackPercentage() > 0
               ? this.countPositiveFeedbackPercentage()
-              : '0'}
-            %
-          </li>
-        </ul>
+              : '0'
+          }
+        ></Statistics>
       </div>
     );
   }
