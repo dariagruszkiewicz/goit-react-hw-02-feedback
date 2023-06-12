@@ -1,6 +1,7 @@
 import css from './Feedback.module.css';
 import { Component } from 'react';
 import { Statistics } from 'components/Statistics/Statistics';
+import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 
 export class Feedback extends Component {
   state = {
@@ -37,9 +38,18 @@ export class Feedback extends Component {
     return (
       <div className={css.wrapper}>
         <h1>Please leave feedback</h1>
-        <button onClick={() => this.handleClick('good')}>Good</button>
-        <button onClick={() => this.handleClick('neutral')}>Neutral</button>
-        <button onClick={() => this.handleClick('bad')}>Bad</button>
+        <FeedbackOptions
+          options={'Good'}
+          onLeaveFeedback={() => this.handleClick('good')}
+        ></FeedbackOptions>
+        <FeedbackOptions
+          options={'Neutral'}
+          onLeaveFeedback={() => this.handleClick('neutral')}
+        ></FeedbackOptions>
+        <FeedbackOptions
+          options={'Bad'}
+          onLeaveFeedback={() => this.handleClick('bad')}
+        ></FeedbackOptions>
         <Statistics
           good={this.state.good}
           neutral={this.state.neutral}
