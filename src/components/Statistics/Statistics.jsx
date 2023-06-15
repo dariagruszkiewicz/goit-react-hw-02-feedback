@@ -9,7 +9,6 @@ export const Statistics = ({
 }) => {
   return (
     <ul className={css.statisticsList}>
-      <h2>Statistics</h2>
       <li>Good: {good}</li>
       <li>Neutral: {neutral}</li>
       <li>Bad: {bad}</li>
